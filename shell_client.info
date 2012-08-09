@@ -1,0 +1,5 @@
+name = "Shell Client"
+description = "Provides a shell client class"
+core = 7.x
+
+files[] = shell_client.class.inc
