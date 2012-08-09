@@ -40,6 +40,8 @@ class Shell {
         $values = array_map('trim', $matches[2]);
         self::$initial_env = array_combine($keys, $values);
       }
+      self::$initial_env = array_merge(self::$initial_env, variable_get('shell_client_initial_env', array()));
+      drupal_alter('shell_client_initial_env', self::$initial_env);
     }
     return self::$initial_env;
   }
