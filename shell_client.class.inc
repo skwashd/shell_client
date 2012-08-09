@@ -144,6 +144,14 @@ class Shell {
   public function prepareCommand($command, array $options = array(), array $args = array()) {
     $command_parts = array($command);
 
+    $variables = array(
+      'command' => $command,
+      'options' => $options,
+      'args'    => $args,
+    );
+    drupal_alter('shell_client_command', $variables);
+    extract($variables);
+
     if (count($options) > 0) {
       $options_items = array();
       foreach ($options as $name => $value) {
